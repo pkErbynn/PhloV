@@ -14,9 +14,14 @@
     <th>Product</th>
     <th>Price</th>
   </tr>
-  <tr *ngIf="orders.length === 0; else availableorders" id="noordersAvailable">
-      <td colspan="4" class="no"> No orders available </td>
+
+  <tr *ngIf="isLoading">
+      <td colspan="3"> Loading... </td>
   </tr>
+  <tr *ngIf="orders.length === 0 && !isLoading; else availableorders" id="noordersAvailable">
+    <td colspan="3"> No orders available </td>
+  </tr>
+
   <ng-template #availableorders>
     <tr *ngFor="let order of orders; let i = index">
       <td>{{ order.customerName }}</td>

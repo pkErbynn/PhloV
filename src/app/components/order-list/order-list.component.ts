@@ -13,7 +13,8 @@ import { OrderService } from 'src/app/services/order.service';
 export class OrderListComponent implements OnInit {
   orders: Order[] = [];
   errorMessage: string | undefined;
-  subscription: Subscription | undefined;
+  private subscription: Subscription | undefined;
+  isLoading = true;
 
   constructor(
     private orderService: OrderService,
@@ -24,9 +25,11 @@ export class OrderListComponent implements OnInit {
     this.orderService.getOrders().subscribe(
       (orders: Order[]) => {
         this.orders = orders;
+        this.isLoading = false;
       },
       (err: string) => {
         this.errorMessage = err;
+        this.isLoading = false;
       }
     );
   }
