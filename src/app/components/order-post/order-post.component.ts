@@ -20,7 +20,7 @@ export class OrderPostComponent implements OnInit {
     )
   {
     this.orderForm = new FormGroup({
-      customer: new FormControl({value: '', disable: true}, [Validators.required, Validators.minLength(2)]),
+      customer: new FormControl('', [Validators.required, Validators.maxLength(20)]),
       product: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required)
     });

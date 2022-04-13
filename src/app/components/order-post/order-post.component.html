@@ -1,6 +1,27 @@
-<button class="btn btn-success" (click)="onBack()">Back</button>
-
 
 <h2>Order Sale</h2>
 <hr><br>
+
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name"> Customer Name </label> <br>
+    <input id="name" type="text" formControlName="customer">
+  </div> <br>
+
+  <div class="form-group">
+    <label for="product"> Product </label> <br>
+    <input id="product" type="text" formControlName="product">
+  </div> <br>
+
+  <div class="form-group">
+    <label for="price"> Price </label><br>
+    <input id="price" type="number" formControlName="price">
+  </div><br>
+
+  <div>
+    <button class="button" type="submit" [disabled]="!orderForm.valid">Submit Order</button>
+    <button (click)="onBack()" style="margin-left: 10px;">Back</button>
+  </div>
+
+</form>
 
