@@ -1,0 +1,27 @@
+<button class="btn btn-success" (click)="onNewOrder()">New Order Sale</button>
+
+
+<div *ngIf="errorMessage" class="alert">
+  Error occurred: {{ errorMessage }}
+</div>
+
+<h3>Orders</h3>
+<hr><br>
+
+<table id="ordersTb">
+  <tr>
+    <th>Customer</th>
+    <th>Product</th>
+    <th>Price</th>
+  </tr>
+  <tr *ngIf="orders.length === 0; else availableorders" id="noordersAvailable">
+      <td colspan="4" class="no"> No orders available </td>
+  </tr>
+  <ng-template #availableorders>
+    <tr *ngFor="let order of orders; let i = index">
+      <td>{{ order.customerName }}</td>
+      <td>{{ order.productName }}</td>
+      <td>{{ order.price }}</td>
+    </tr>
+  </ng-template>
+</table>

@@ -1,0 +1,37 @@
+h3 {
+  text-align: center
+}
+
+#ordersTb {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#ordersTb td, #ordersTb th {
+  border: 1px solid #ddd;
+  padding: 12px;
+}
+
+#ordersTb tr:hover {background-color: rgb(246, 246, 246);}
+
+#ordersTb th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: rgb(235, 235, 235);
+}
+
+.alert {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  padding: .75rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+#noOrdersAvailable {
+  text-align: center;
+  border-style:hidden
+}
