@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Guid } from 'guid-typescript';
 import { Subscription } from 'rxjs';
+import { Order } from 'src/app/interfaces/order';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -27,13 +29,18 @@ export class OrderPostComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
   onSubmit() {
-    console.log(this.orderForm.value);
-    // this.orderService.addOrder(this.orderForm.value);
-    this.router.navigate(["/new"]);
+    const newOrder: Order = {
+      prodOrderId: Guid.create().toString(),
+      customerName: this.orderForm.value.customer,
+      productName: this.orderForm.value.product,
+      price: this.orderForm.value.price,
+    }
+
+    this.orderService.postOrder(newOrder);
+    this.orderForm.reset();
   }
 
   onBack(){

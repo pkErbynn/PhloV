@@ -9,11 +9,12 @@ import { Order } from '../interfaces/order';
 export class OrderService {
 
   url = 'https://phlosales.herokuapp.com/api/v1/prodorders';
+  // url = 'https://localhost:7028/api/v1/ProdOrders';
 
   constructor(private http: HttpClient) { }
 
   getOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(this.url).pipe(  // improved with catchError block
+    return this.http.get<Order[]>(this.url).pipe(
       map((orders: Order[]) => {
         console.log('orders', orders);
         return orders;
@@ -23,5 +24,11 @@ export class OrderService {
         return throwError(() => new Error(err.message));
       })
     );
+  }
+
+  postOrder(order: Order) {
+    console.log('outgoing->', order);
+    return this.http.post<Order>(this.url, order).subscribe(res =>
+      console.log(res));
   }
 }
