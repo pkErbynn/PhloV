@@ -10,7 +10,12 @@
 
   <div class="form-group">
     <label for="product"> Product </label> <br>
-    <input id="product" type="text" formControlName="product">
+    <select (change)="changeProduct($event)" formControlName="product">
+      <option value="">Choose Product</option>
+      <option *ngFor="let product of products">
+        {{ product }}
+      </option>
+    </select>
   </div> <br>
 
   <div class="form-group">

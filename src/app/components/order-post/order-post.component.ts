@@ -14,6 +14,7 @@ import { OrderService } from 'src/app/services/order.service';
 export class OrderPostComponent implements OnInit {
   orderForm: FormGroup;
   subscription: Subscription | undefined;
+  products: any = ['laptop-m1', 'phone', 'webcam', 'headset', 'wfh desk', 'curved monitor', 'keyboard'];
 
   constructor(
     private orderService: OrderService,
@@ -24,14 +25,22 @@ export class OrderPostComponent implements OnInit {
     this.orderForm = new FormGroup({
       customer: new FormControl('', [Validators.required, Validators.maxLength(20)]),
       product: new FormControl('', Validators.required),
-      price: new FormControl('', Validators.required)
+      price: new FormControl('', Validators.required),
     });
   }
 
   ngOnInit(): void {
   }
 
+  changeProduct(e: any) {
+    this.orderForm.get('product')?.setValue(e.target.value, {
+      onlySelf: true,
+    });
+  }
+
   onSubmit() {
+    console.log('new', this.orderForm.value);
+
     const newOrder: Order = {
       prodOrderId: Guid.create().toString(),
       customerName: this.orderForm.value.customer,
