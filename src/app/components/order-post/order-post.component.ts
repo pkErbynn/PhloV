@@ -39,8 +39,7 @@ export class OrderPostComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('new', this.orderForm.value);
-
+    // console.log('new', this.orderForm.value);
     const newOrder: Order = {
       prodOrderId: Guid.create().toString(),
       customerName: this.orderForm.value.customer,
@@ -52,8 +51,8 @@ export class OrderPostComponent implements OnInit {
     this.orderForm.reset();
   }
 
-  onBack(){
-    this.router.navigate(["../"], { relativeTo: this.activatedRoute });
+  onViewOders(){
+    this.router.navigate(["/orders"]);
   }
 
   ngOnDestroy() {

@@ -34,7 +34,7 @@ export class OrderListComponent implements OnInit {
     );
   }
 
-  onNewOrder() {
+  onNewSaleOrder() {
     this.router.navigate(["/new"]);
   }
 

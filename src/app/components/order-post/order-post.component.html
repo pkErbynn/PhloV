@@ -1,6 +1,5 @@
-
 <h2>Order Sale</h2>
-<hr><br>
+<hr>
 
 <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
@@ -24,9 +23,13 @@
   </div><br>
 
   <div>
-    <button class="button" type="submit" [disabled]="!orderForm.valid">Submit Order</button>
-    <button (click)="onBack()" style="margin-left: 10px;">Back</button>
+    <button class="button" type="submit" [disabled]="!orderForm.valid">Submit</button>
   </div>
 
 </form>
+<br>
+
+<hr><br>
+<button class="btn btn-success" (click)="onViewOders()">View sold products</button>
+
 
